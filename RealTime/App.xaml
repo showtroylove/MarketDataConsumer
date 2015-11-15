@@ -1,0 +1,13 @@
+﻿<Application x:Class="RealTime.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:TroyStevens.Market.Client;assembly=MarketDataProvidersLib"
+             StartupUri="RealTimeQuoteMobileView.xaml">
+    <!--
+        NON-SKINNED VERSION
+        StartupUri="RealTimeQuoteView.xaml">
+    -->
+    <Application.Resources>
+        <local:RealTimeQuoteViewModel x:Key="RealTimeQuoteViewModel" />
+    </Application.Resources>
+</Application>

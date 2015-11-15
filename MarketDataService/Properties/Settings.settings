@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TroyStevens.Market.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ThirdPartyProcessingDelayInMilliseconds" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1000</Value>
+    </Setting>
+    <Setting Name="CommaSeperatedProviderSymbolsOrion" Type="System.String" Scope="User">
+      <Value Profile="(Default)">AAA,BBB,CCC,DDD,EEE,FFF,BBB,EEE,AAA,DDD,AAA,CCC</Value>
+    </Setting>
+    <Setting Name="CommaSeperatedProviderSymbolsPolaris" Type="System.String" Scope="User">
+      <Value Profile="(Default)">AAA,BBB,CCC,GGG,HHH,III,JJJ,BBB,GGG,AAA,III,CCC</Value>
+    </Setting>
+    <Setting Name="IsThirdPartyProcessingDelayActive" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="MaxiumNumberOfSymbolBots" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">12</Value>
+    </Setting>
+    <Setting Name="MaxNumberOfSymbolUpdates" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">12</Value>
+    </Setting>
+    <Setting Name="ProviderInactivtyTimeOutInMilliseconds" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">15000</Value>
+    </Setting>
+    <Setting Name="LoggingFeatureEnabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

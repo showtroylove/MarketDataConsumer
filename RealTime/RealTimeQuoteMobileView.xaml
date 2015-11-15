@@ -1,0 +1,159 @@
+﻿<Window x:Class="TroyStevens.Market.Client.RealTimeQuoteMobileView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Name="RealTimeQuoteMobileViewer"
+        Title="RealTime - Market Data Quote Tool"
+        Width="297"
+        Height="511.624"
+        AllowsTransparency="True"
+        DataContext="{StaticResource RealTimeQuoteViewModel}"
+        Icon="Resources/RealTime Phone App.png"
+        MouseLeftButtonDown="OnMouseLeftButtonDown"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        mc:Ignorable="d">
+    <Window.Background>
+        <ImageBrush ImageSource="Resources/RealTime Phone App.png" Stretch="UniformToFill" />
+    </Window.Background>
+    <Window.Resources>
+        <Style x:Key="ImageButton"
+               BasedOn="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+               TargetType="Button">
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="5"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" Value="Gainsboro" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" Value="0.25" />
+                                <Setter Property="BorderBrush" Value="Transparent" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Canvas Width="auto"
+            Height="auto"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top">
+        <Border x:Name="RealTimeApp"
+                Canvas.Left="7"
+                Canvas.Top="45"
+                Width="284"
+                Height="408"
+                BorderBrush="Black"
+                BorderThickness="0">
+            <Border.Background>
+                <ImageBrush ImageSource="Resources/background.png" />
+            </Border.Background>
+            <DataGrid x:Name="dataGridView1"
+                      Margin="0"
+                      AutoGenerateColumns="False"
+                      Background="Transparent"
+                      BorderThickness="0"
+                      HorizontalGridLinesBrush="Transparent"
+                      ItemsSource="{Binding MarketData}"
+                      RowBackground="Transparent"
+                      RowHeaderWidth="0"
+                      VerticalGridLinesBrush="Transparent">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="*"
+                                        Binding="{Binding Symbol}"
+                                        FontWeight="Bold"
+                                        Header="Symbol"
+                                        IsReadOnly="True" />
+                    <DataGridTemplateColumn Width="*"
+                                            Header="Last"
+                                            IsReadOnly="True">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Background="Transparent"
+                                         BorderBrush="Transparent"
+                                         Foreground="{Binding DeltaColor}"
+                                         IsReadOnly="True"
+                                         Text="{Binding Last,
+                                                        StringFormat=\{0:C\}}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+        <Button x:Name="Connection"
+                Canvas.Left="25"
+                Canvas.Top="465"
+                Width="56"
+                Height="33"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                ClickMode="Press"
+                Command="{Binding ConnectOrDisconnect}"
+                Cursor="Hand"
+                Focusable="False"
+                Foreground="Transparent"
+                Style="{StaticResource ImageButton}"
+                ToolTip="{Binding ConnectionStatusText}" />
+        <Button Canvas.Left="91"
+                Canvas.Top="10"
+                Width="121"
+                Height="25"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                Click="OnPowerOff"
+                Command="{Binding OnViewClosing,
+                                  Mode=OneWay}"
+                Cursor="Hand"
+                Focusable="False"
+                Foreground="Transparent"
+                Style="{StaticResource ImageButton}"
+                ToolTip="Power Off" />
+        <Button x:Name="Home"
+                Canvas.Left="111"
+                Canvas.Top="465"
+                Width="77"
+                Height="33"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                BorderThickness="0"
+                Click="Home_Click"
+                Cursor="Hand"
+                Focusable="False"
+                Foreground="Transparent"
+                Style="{StaticResource ImageButton}"
+                ToolTip="Home Screen" />
+        <Button x:Name="Pause"
+                Canvas.Left="214"
+                Canvas.Top="465"
+                Width="60"
+                Height="33"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                Command="{Binding PauseOrResume,
+                                  Mode=OneWay}"
+                Cursor="Hand"
+                Focusable="False"
+                Foreground="Transparent"
+                Style="{StaticResource ImageButton}"
+                ToolTip="{Binding PauseStatusText,
+                                  Mode=OneWay}"
+                UseLayoutRounding="True" />
+    </Canvas>
+
+</Window>
